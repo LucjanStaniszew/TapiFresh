@@ -1,0 +1,55 @@
+<!-- SEO Básico -->
+<title>Limpieza de Tapizados, Alfombras, Colchones y Vehículos | Servicio Profesional</title>
+
+<meta name="description" content="Servicio profesional de limpieza de tapizados, sillones, colchones, alfombras y vehículos. Eliminamos manchas, ácaros, bacterias y malos olores con productos de alta calidad.">
+
+<meta name="keywords" content="limpieza de tapizados, limpieza de sillones, lavado de sillones, limpieza de colchones, limpieza de alfombras, limpieza de interiores de autos, limpieza de vehículos, lavado de tapizados, desinfección de colchones, limpieza profesional">
+
+<meta name="robots" content="index, follow">
+<meta name="author" content="Nombre del Emprendimiento">
+
+<link rel="canonical" href="https://www.tusitio.com/">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="UTF-8">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Limpieza Profesional de Tapizados, Alfombras y Colchones">
+
+<meta property="og:description" content="Recuperá la limpieza y frescura de tus muebles, colchones, alfombras e interiores de vehículos con un servicio profesional.">
+
+<meta property="og:image" content="https://www.tusitio.com/img/og-image.jpg">
+
+<meta property="og:url" content="https://www.tusitio.com/">
+
+<meta property="og:locale" content="es_AR">
+
+<meta property="og:site_name" content="Nombre del Emprendimiento">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Limpieza Profesional de Tapizados y Alfombras">
+
+<meta name="twitter:description" content="Especialistas en limpieza profunda de sillones, colchones, alfombras e interiores de vehículos.">
+
+<meta name="twitter:image" content="https://www.tusitio.com/img/og-image.jpg">
+
+SCHEMA.ORG
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"Nombre del Emprendimiento",
+  "image":"https://www.tusitio.com/img/logo.png",
+  "telephone":"+54 9 11 1234-5678",
+  "address":{
+      "@type":"PostalAddress",
+      "addressCountry":"AR"
+  },
+  "url":"https://www.tusitio.com",
+  "priceRange":"$$",
+  "description":"Servicio profesional de limpieza de tapizados, colchones, alfombras y vehículos."
+}
+</script>
