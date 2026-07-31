@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+// import { SpeedInsights } from "@vercel/speed-insights/next"
+// import { Analytics } from "@vercel/analytics/next"
 import './App.scss'
 import logo from '../assets/tapi.webp'
 // import logo from '../assets/logo.jpeg'
@@ -83,6 +85,7 @@ function App() {
   const [zoomLevel, setZoomLevel] = useState(1)
   const [activeFaq, setActiveFaq] = useState(-1)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState('light')
   const [formData, setFormData] = useState(emptyForm)
   const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' })
 
@@ -111,6 +114,26 @@ function App() {
 
   const zoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.25, 2.5))
   const zoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.25, 1))
+  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+
+  useEffect(() => {
+    document.body.classList.toggle('theme-dark', theme === 'dark')
+    document.body.classList.toggle('theme-light', theme === 'light')
+  }, [theme])
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleClickOutside = (event) => {
+      const nav = document.querySelector('.navbar')
+      if (nav && !nav.contains(event.target)) {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [menuOpen])
 
   const handleFormChange = (event) => {
     const { name, value } = event.target
@@ -142,20 +165,32 @@ function App() {
   }
 
   return (
-    <div className="page-shell">
+    <div className={`page-shell ${theme === 'dark' ? 'theme-dark' : ''}`}>
       <header className="topbar">
         <nav className="navbar" aria-label="Main navigation">
           <a href="#hero" className="logo-group" onClick={() => setMenuOpen(false)}>
             <img src={logo} alt="Tapi Fresh logo" />
             <span>Tapi Fresh</span>
           </a>
-          <button className="menu-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label="Abrir menú">
-            ☰
-          </button>
+          <div className="nav-actions">
+            <button
+              className={`theme-toggle ${theme === 'dark' ? 'is-dark' : ''}`}
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              type="button"
+            >
+              <span className="theme-toggle-track">
+                <span className="theme-toggle-thumb" />
+              </span>
+            </button>
+            <button className="menu-toggle" onClick={() => setMenuOpen((prev) => !prev)} aria-label="Abrir menú" type="button">
+              ☰
+            </button>
+          </div>
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <a href="#services" onClick={() => setMenuOpen(false)}>Servicios</a>
             <a href="#results" onClick={() => setMenuOpen(false)}>Resultados</a>
-            <a href="#reviews" onClick={() => setMenuOpen(false)}>Reseñas</a>
+            {/* <a href="#reviews" onClick={() => setMenuOpen(false)}>Reseñas</a> */}
             <a href="#faq" onClick={() => setMenuOpen(false)}>Preguntas</a>
             <a href="#contact" onClick={() => setMenuOpen(false)}>Contacto</a>
           </div>
@@ -208,13 +243,13 @@ function App() {
             <div className="result-view">
               <div className="result-image-shell">
                 <button className="carousel-btn carousel-btn-left" onClick={showPrev} aria-label="Ver anterior">
-                  ←
+                  <span>←</span>
                 </button>
                 <button className="result-main" onClick={() => openPreview(activeIndex)} aria-label="Ampliar imagen">
                   <img src={activeImage} alt="Trabajo destacado" />
                 </button>
                 <button className="carousel-btn carousel-btn-right" onClick={showNext} aria-label="Ver siguiente">
-                  →
+                  <span>→</span>
                 </button>
               </div>
               <div className="result-thumbs" role="list">
@@ -333,5 +368,6 @@ function App() {
     </div>
   )
 }
+{/* <SpeedInsights/> */}
 
 export default App

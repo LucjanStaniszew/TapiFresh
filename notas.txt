@@ -1,0 +1,2 @@
+Color-claro: #D8F7F6;
+Color-Oscuro: #405C77;
