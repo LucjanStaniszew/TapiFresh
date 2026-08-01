@@ -125,7 +125,8 @@ textarea {
   a {
     padding: 0.65rem 0.9rem;
     border-radius: 999px;
-    color: var(--theme-text);
+    color: var(--theme-accent);
+    font-weight: 500;
     transition: 180ms ease;
 
     &:hover {
